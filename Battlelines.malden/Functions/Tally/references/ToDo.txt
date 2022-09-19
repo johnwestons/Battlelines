@@ -1,0 +1,7 @@
+-frontline system 
+        
+create/delete and track markers
+detect units within "zones"
+evaluate conditions to change zone color
+update zones and loop
+save zone data
