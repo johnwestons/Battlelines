@@ -6,6 +6,14 @@
 FrontL_debug = true;
 FrontL_updateTimer = 0;
 
+//shorter function-name for ease of writing
+if(isNil "fDbgMsg")
+then{
+  fDbgMsg = frontL_fnc_debugMessage;
+  };
+
+
+/*
 private _zoneMarkers = allMapMarkers select {"frontL" in _x};
 FrontL_AllZones = createHashMap;
 
@@ -18,31 +26,9 @@ FrontL_AllZones = createHashMap;
 
 
 [] spawn frontL_fnc_zoneUpdater;
+*/
 
-
-//this codeBlock is for debugging and testing new functions by pressing numpad 1-2
-// set FrontL_debug to false to avoid this.
-// Will be moved to its own file soon.
-if(FrontL_debug)
-then{
-[]spawn{
-  waituntil {isTouchingGround player};
-
-  execVM 'Functions\Tally\DevFile.sqf';
-
-  (findDisplay 46) displayAddEventHandler 
-  ["KeyDown", "
-        private _Pressed = false;
-        if ((_this # 1) == 79) then {execVM 'Functions\Tally\DevFile.sqf'; _Pressed = true};
-        if ((_this # 1) == 80) then {hint 'reCompiling...'; [5] call BIS_fnc_recompile; _Pressed = true};
-        if ((_this # 1) == 81) then {
-                        {
-                          [_x] call SFSM_fnc_battlefieldEnd;	
-                        }forEach SFSM_battles;
-                        _Pressed = true;
-                      };
-  _Pressed"];
-}};
+if(FrontL_debug)then{[]spawn frontL_fnc_debugInit};
 
 
 

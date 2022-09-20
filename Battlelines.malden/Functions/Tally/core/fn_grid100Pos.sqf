@@ -3,7 +3,15 @@ Creates an array of 100 positions within a radius defined by inputParams.
 the positions are in AGL format with a z value of 1.5
 the function will exclude positions with a water-surface
 */
-params ["_Center", "_Size"];
+private _posCount = 100;
+private _includeWaterPos = false;
+
+params [
+	"_Center", 
+	"_Size", 
+	"_posCount", //added this option after constructing the function, for legacy reasons I will not change the name
+	"_includeWaterPos"
+	];
 private _iterationDistance	=  _Size / 10;
 private _grid = [];
 
@@ -18,7 +26,7 @@ _startPos = [_startPos#0, _startPos#1, 45, (_iterationDistance * 0.75)] call Tco
 private _pos = _startPos;
 private _Counter = 1;
 
-for "_I" from 1 to 100 do{
+for "_I" from 1 to _posCount do{
 
 if(_Counter == 11)then{
 						_Counter = 1;
@@ -28,7 +36,10 @@ if(_Counter == 11)then{
 									(_pos select 2)
 								];
 					 };
-if(!surfaceIsWater _pos)
+private _includePos = _includeWaterPos || (!surfaceIsWater _pos);
+
+
+if(_includePos)
 then{
 		_grid pushBack _pos;
 	};

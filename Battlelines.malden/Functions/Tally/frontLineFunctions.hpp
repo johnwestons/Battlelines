@@ -7,8 +7,14 @@ class frontL
 									postInit = 1;
 								};
 		}
-
-        class polyLine
+        
+		class debug
+		{
+			class debugMessage {file="Functions\Tally\debug\fn_debugMessage.sqf"};
+			class debugInit {file = "Functions\Tally\debug\fn_debugInit.sqf";};
+		}
+        
+		class polyLine
 		{
 			class straightLinePath {file = "Functions\Tally\polyLine\fn_straightLinePath.sqf";};
 			class pathFromPosArr {file = "Functions\Tally\polyLine\fn_pathFromPosArr.sqf";};
@@ -54,9 +60,9 @@ class frontL
 			class frontLineDir {file="Functions\Tally\misc\fn_frontLineDir.sqf"};
 			class sidePositions {file="Functions\Tally\misc\fn_sidePositions.sqf"};
 			class straightPosArr {file="Functions\Tally\misc\fn_straightPosArr.sqf"};
-			class debugMessage {file="Functions\Tally\misc\fn_debugMessage.sqf"};
 			class midArrayIndex {file="Functions\Tally\misc\fn_midArrayIndex.sqf"};
 			class frontLinePosBetween2Sides {file="Functions\Tally\misc\fn_frontLinePosBetween2Sides.sqf"};
+			
 			
 		}
 		class markers
