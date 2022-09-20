@@ -19,6 +19,7 @@ then{_postFix = str _pos};
 
 private _markername = [_pos, " dot_", _postFix] joinString "";
 private _marker = createMarker [_markername, _pos];
+_marker setMarkerColorLocal _color;
 _marker setMarkerTextLocal _text;
 _marker setMarkerTypeLocal "hd_dot";
 _marker setMarkerSize [_size,_size];

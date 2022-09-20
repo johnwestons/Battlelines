@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=137;
+		nextID=138;
 	};
 	class MarkerIDProvider
 	{
-		nextID=1;
+		nextID=2;
 	};
 	class Camera
 	{
-		pos[]={5887.98,421.02139,3173.6538};
-		dir[]={-0.22265182,-0.63375753,0.740798};
-		up[]={-0.18241911,0.77353072,0.60693765};
-		aside[]={0.95768046,-1.0011718e-008,0.28783712};
+		pos[]={5621.3774,1095.6737,1561.3063};
+		dir[]={0.067034058,-0.74430805,0.6644637};
+		up[]={0.074709892,0.66783643,0.74054909};
+		aside[]={0.9949497,0,-0.10037496};
 	};
 };
 binarizationWanted=0;
@@ -115,7 +115,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=6;
+		items=4;
 		class Item0
 		{
 			dataType="Group";
@@ -333,43 +333,16 @@ class Mission
 		class Item3
 		{
 			dataType="Marker";
-			position[]={5818.2803,54.872387,3597.6536};
-			name="frontL Zone1";
+			position[]={10517.777,11.741812,4017.7051};
+			name="frontL battleZone";
 			markerType="ELLIPSE";
 			type="";
 			fillName="Border";
-			a=300;
-			b=300;
+			a=1200;
+			b=1800;
+			angle=62.728981;
 			drawBorder=1;
-			id=134;
-		};
-		class Item4
-		{
-			dataType="Marker";
-			position[]={3713.5437,12.808594,3236.3123};
-			name="frontL Zone1_1";
-			markerType="ELLIPSE";
-			type="";
-			fillName="Border";
-			a=200;
-			b=200;
-			drawBorder=1;
-			id=135;
-			atlOffset=-5.3782597;
-		};
-		class Item5
-		{
-			dataType="Marker";
-			position[]={5358.9043,40.51416,2763.3013};
-			name="frontL Zone1_2";
-			markerType="ELLIPSE";
-			type="";
-			fillName="Border";
-			a=150;
-			b=150;
-			drawBorder=1;
-			id=136;
-			atlOffset=-0.8082962;
+			id=137;
 		};
 	};
 	class Connections
