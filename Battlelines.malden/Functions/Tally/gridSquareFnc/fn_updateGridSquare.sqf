@@ -5,7 +5,7 @@
 
 params["_gridHash", "_unitsInArea"];
 // private _pos = _gridHash get "position";
-private _marker = _gridHash get "markerName";
+private _marker = _gridHash get "marker";
 
 private _previousOccupier = _gridHash get "previousOccupier";
 private _currentOccupier = _gridHash get "occupier";
@@ -32,9 +32,10 @@ if(count _sidesPresent > 1)then{_newOccupier = sideEnemy;};
 if((typeName _newOccupier == "SIDE"))
 then{
 		_gridHash set ["previousOccupier", _currentOccupier];
+		_gridHash set ["occupier", _newOccupier];
 };
 
-_gridHash set ["occupier", _newOccupier];
+
 
 private _timeSinceLastOccupation = time - (_gridHash get "lastOccupied");
 private _dominantSide = _newOccupier;
@@ -49,8 +50,10 @@ then{_dominantSide = _previousOccupier;};
 private _color = [_dominantSide] call frontL_fnc_mrkColorFromSide;
 _marker setMarkerColor _color;
 
-if(_timeSinceLastOccupation > 180)
-then{
-		_gridHash set ["occupier", objNull];
-		_gridHash set ["previousOccupier", objNull];
-};
+/*This will be reactivated once we have an agreement on the logic */
+
+// if(_timeSinceLastOccupation > 180)
+// then{
+// 		_gridHash set ["occupier", objNull];
+// 		_gridHash set ["previousOccupier", objNull];
+// };

@@ -1,7 +1,7 @@
 // Author:         [P] Tally (https://github.com/Tally-1)
 // Comissioned by: Great Ape Gaming
 // Description:    Displays a message and logs it to the RPT file when FrontL_debug is set to true.
-
+private _displayType = 1;
 params["_text", "_displayType"];
 
 private _signature = "FrontLines  -->  ";

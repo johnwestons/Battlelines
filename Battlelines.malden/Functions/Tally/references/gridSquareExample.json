@@ -1,0 +1,29 @@
+[
+    ["previousOccupier", "EAST"],
+    ["marker", "[10091.4,2745.36,0] squareMarker_battleZoneGSQ"],
+    ["lastOccupied", 353.665],
+    [
+      "edges",
+      [
+        ["right", [10091.4, 2798.3, 0]],
+        ["bottom", [10091.4, 2798.3, 0]],
+        ["topLeft", [10091.4, 2798.3, 0]],
+        ["topRight", [10091.4, 2798.3, 0]],
+        ["top", [10091.4, 2798.3, 0]],
+        ["left", [10091.4, 2798.3, 0]],
+        ["bottomRight", [10091.4, 2798.3, 0]],
+        ["bottomLeft", [10091.4, 2798.3, 0]]
+      ]
+    ],
+    [
+      "neighbors",
+      [
+        ["right", "any"],
+        ["bottom", "any"],
+        ["top", "[10091.4,2851.24,0] squareMarker_battleZoneGSQ"],
+        ["left", "any"]
+      ]
+    ],
+    ["position", [10091.4, 2745.36, 0]],
+    ["occupier", "EAST"]
+  ]
