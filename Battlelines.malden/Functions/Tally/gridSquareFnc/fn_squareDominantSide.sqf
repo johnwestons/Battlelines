@@ -4,8 +4,8 @@
 
 params["_squareHash"];
 
-private _dominantSide = _x get "occupier";
+private _dominantSide = _squareHash get "occupier";
 if(!(typeName _dominantSide == "SIDE"))
-then{_dominantSide = _x get "previousOccupier";};
+then{_dominantSide = _squareHash get "previousOccupier";};
 
 _dominantSide;

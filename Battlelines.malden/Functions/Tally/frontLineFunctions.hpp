@@ -35,6 +35,7 @@ class frontL
 			class zoneUpdater {file = "Functions\Tally\zoneFnc\fn_zoneUpdater.sqf";};
 			class updateZone {file = "Functions\Tally\zoneFnc\fn_updateZone.sqf";};
 			class initZoneFromMarker {file = "Functions\Tally\zoneFnc\fn_initZoneFromMarker.sqf";};
+			class getBattleGrid {file = "Functions\Tally\zoneFnc\fn_getBattleGrid.sqf";};
 		}
 
 		class gridSquareFnc
@@ -62,6 +63,9 @@ class frontL
 			class straightPosArr {file="Functions\Tally\misc\fn_straightPosArr.sqf"};
 			class midArrayIndex {file="Functions\Tally\misc\fn_midArrayIndex.sqf"};
 			class frontLinePosBetween2Sides {file="Functions\Tally\misc\fn_frontLinePosBetween2Sides.sqf"};
+			class squareGrid {file="Functions\Tally\misc\fn_squareGrid.sqf"};
+			class sinCosPos {file="Functions\Tally\misc\fn_sinCosPos.sqf"};
+			class removeExcludedPositions {file="Functions\Tally\misc\fn_removeExcludedPositions.sqf"};
 			
 			
 		}

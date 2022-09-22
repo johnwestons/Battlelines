@@ -6,138 +6,225 @@ systemChat "devFile found";
 //                 essentially my electronic scribble-block.
 
 /************************************Functions under construction************************/
-frontL_fnc_sinCosPos = { 
-private _zValue = 0;
-params ["_pos", "_Dir", "_Distance", "_zValue"];
 
-private _OrigX = _pos#0;
-private _Origy = _pos#1;
-Private _NewX = ((sin _Dir) * _Distance) + _OrigX;
-Private _Newy = ((cos _Dir) * _Distance) + _OrigY;
+frontL_fnc_gridSqNeighbors = { 
+params ["_gridHash", "_gridSquares"];
+private _neighbors = createHashMap;
+private _marker = _gridHash get "marker";
+private _center = _gridHash get "position";
+private _size = selectMax(markerSize _marker);
+private _radius = _size*2;
 
-Private _newPos = [_NewX,_NewY, _zValue];
+private _topPos = [_center, 0, _radius] call frontL_fnc_sinCosPos;
+private _rightPos = [_center, 90, _radius] call frontL_fnc_sinCosPos;
+private _bottomPos = [_center, 180, _radius] call frontL_fnc_sinCosPos;
+private _leftPos = [_center, 270, _radius] call frontL_fnc_sinCosPos;
 
-_newPos;
-};
+_neighbors set ["top", ([_topPos, _gridSquares, _size, false] call frontL_fnc_nearestGridSquare) get "marker"];
+_neighbors set ["right", ([_rightPos, _gridSquares, _size, false] call frontL_fnc_nearestGridSquare) get "marker"];
+_neighbors set ["left", ([_bottomPos, _gridSquares, _size, false] call frontL_fnc_nearestGridSquare) get "marker"];
+_neighbors set ["bottom", ([_leftPos, _gridSquares, _size, false] call frontL_fnc_nearestGridSquare) get "marker"];
 
-////////////////////////////////////////////////////
+_gridHash set ["neighbors", _neighbors];
 
-frontL_fnc_filledSquarePosArr = { 
-private _posCount = 100;
-private _zValue = 0;
-private _includeWaterPos = false;
-
-params [
-	"_Center", 
-	"_Size", 
-	"_posCount",
-	"_zValue",
-	"_includeWaterPos"
-	];
-private _iterationDistance	=  _Size / 10;
-private _grid = [];
-
-private _startPos 	= 	[
-							(_Center#0) - (_Size / 2),
-							(_Center#1) - (_Size / 2),
-							 _Center#2
-						];
-
-_startPos = [_startPos, 45, (_iterationDistance * 0.75)] call frontL_fnc_sinCosPos;
-
-private _pos = _startPos;
-private _Counter = 1;
-private _maxCount = round (_posCount / 10);
-// private _restartCount = _maxCount+1;
-
-//production Loop
-for "_I" from 1 to _posCount do{
-
-if(_Counter > _maxCount)
-then{
-        _Counter = 1;
-		_Pos = 	[
-                    _startPos#0,
-                    (_pos#1) + _iterationDistance,
-                    _pos#2
-                ];
-    };
-
-//only include positions on land. (can be adjusted using param _includeWaterPos) 
-if(_includeWaterPos || (!surfaceIsWater _pos))then{_grid pushBack _pos;};
-
-_pos = 	[
-			(_pos # 0) + _iterationDistance,
-			(_pos # 1),
-			1.5
-		];
-
-_Counter = (_Counter + 1);
-};
-
-_grid;
+_neighbors;
 };
 
 
-SquarePosArr = { 
-private _posCount = 100;
-private _zValue = 0;
-private _includeWaterPos = false;
-params [
-	"_Center", 
-	"_Size", 
-	"_posCount",
-	"_zValue",
-	"_includeWaterPos"
-	];
 
-private _bottomLeft    = [_center, 225, (_Size * 0.7071)] call frontL_fnc_sinCosPos;
-private _topLeft       = [_center, 315, (_Size * 0.7071)] call frontL_fnc_sinCosPos;
-private _cToCdistance  = _bottomLeft distance2D _topLeft;
+frontL_fnc_gridSquareEdges = { 
+params ["_gridHash"];
 
-private _positions   = [];
-private _axisCount   = round(_posCount / 10);
-private _posDistance = (_cToCdistance / _axisCount);
+private _edges = createHashMap;
+private _marker = _gridHash get "marker";
+private _size = selectMax(markerSize _marker);
+private _dir = 0;
+private _center = _gridHash get "position";
+private _keyValue = "top";
 
-private _yAxis = [_bottomLeft, _topLeft, (_axisCount-2)] call frontL_fnc_straightPosArr;
+for"_I" from 1 to 8 do {
+private _pos = [_center, _dir, _size] call frontL_fnc_sinCosPos;
+_edges set [_keyValue, _pos];
+
+switch (_i) do {
+	case 1: { _keyValue = "topRight"; };
+	case 2: { _keyValue = "right"; };
+	case 3: { _keyValue = "bottomRight"; };
+	case 4: { _keyValue = "bottom"; };
+	case 5: { _keyValue = "bottomLeft"; };
+	case 6: { _keyValue = "left"; };
+	case 7: { _keyValue = "topLeft"; };
+};
+
+private _dir = _dir+45;
+_edges;
+};
+
+};
+
+
+frontL_fnc_battleZoneSideMarkers = {  
+params["_battleZoneMarker"]; 
+private _condition = { "frontL" in _x 
+                       && {("opforSide" in _x) 
+				       || ("bluforSide" in _x)}
+                     };
+
+private _sideMarkers = (allMapMarkers select _condition);
+
+// private _logicMarkerPositions = [];
+// {_logicMarkerPositions pushBackUnique _x;} forEach _sideMarkers;
+// _logicMarkerPositions = _logicMarkerPositions inAreaArray _battleZoneMarker;
+
+// private _sideMarkers = (_sideMarkers select {(markerPos _x) in _logicMarkerPositions});
+
+// systemchat str _sideMarkers;
+
+_sideMarkers;
+};
+
+frontL_fnc_getSquarePositions = { 
+params["_gridSquares"];
+private _positions = [];
+{
+	_positions pushBack (_x get "position");
+	
+} forEach _gridSquares;
+
+_positions
+};
+
+frontL_fnc_getSquaresFromMrk = { 
+params["_gridSquares", "_marker"];
+private _condition = 
+{
+	private _positions = [_gridSquares] call frontL_fnc_getSquarePositions;
+	_positions = _positions inAreaArray _marker;
+	((_x get "position") in _positions)
+};
+
+private _inMrkSqs = _gridSquares select (_condition);
+
+_inMrkSqs;
+};
+
+
+frontL_fnc_assignGridSquareOwners = { 
+params["_gridSquares", "_battleZoneMarker"]; 
+
+private _radius = selectMax(markerSize _battleZoneMarker);
+private _sideMarkers = [_battleZoneMarker] call frontL_fnc_battleZoneSideMarkers;
+private _opforSidePos = markerPos((_sideMarkers select {"opfor" in _x})#0);
+private _bluforSidePos = markerPos((_sideMarkers select {"blufor" in _x})#0);
+private _center = [_opforSidePos, _bluforSidePos] call Tcore_fnc_getMidPoint;
+private _bluDir = _center getDir _bluforSidePos;
+
+private _bluCenter = [_center, _bluDir, _radius] call frontL_fnc_sinCosPos;
+private _bluContainer = [_bluCenter, _radius] call frontL_fnc_SquareMarker;
+_bluContainer setMarkerDir _bluDir;
+private _bluSquares = [_gridSquares, _bluContainer] call frontL_fnc_getSquaresFromMrk;
+private _opSquares = _gridSquares select {!(_x in _bluSquares)};
+{
+	(_x get "marker") setMarkerColor "ColorBlue";
+	_x set ["occupier", bluFor];
+	_x set ["previousOccupier", bluFor];
+	_x set ["lastOccupied", time];
+} forEach _bluSquares;
 
 {
-	private _westPos = _x;
-	private _eastPos = [_westPos, 90, _cToCdistance] call frontL_fnc_sinCosPos;
-	private _newPositions = [_westPos, _eastPos, (_axisCount-2), true, _zValue] call frontL_fnc_straightPosArr;
-	_positions append _newPositions;
-} forEach _yAxis;
+	(_x get "marker") setMarkerColor "ColorRed";
+	_x set ["occupier", opfor];
+	_x set ["previousOccupier", opfor];
+	_x set ["lastOccupied", time];
+} forEach _opSquares;
 
-_positions = _positions select {(_includeWaterPos || (!surfaceIsWater _X))};
 
-_positions;
+deleteMarker _bluContainer;
+
+true;
 };
 
 
 
+frontL_fnc_initBattleZone = { 
+_zone = createHashMap;
 
+private _battleZoneMarker = (allMapMarkers select {"frontL" in _x && {"battleZone" in _x}})#0;//The "in" check is case-sensitive.
+
+private _gridAndGridSquareSize = [_battleZoneMarker] call frontL_fnc_getBattleGrid;
+private _battleGrid = _gridAndGridSquareSize#0;
+private _squareRadius = _gridAndGridSquareSize#1;
+private _markerSize = _squareRadius/2;
+private _center = markerPos _battleZoneMarker;
+private _radius = (selectMax (markerSize _battleZoneMarker)) *2;
+// private _anchorPositions = [_center, (_radius*0.7), 360] call Tcore_fnc_get360Positions;
+private _gridMarkers = [_battleGrid, _markerSize, "battleZoneGSQ"] call frontL_fnc_gridMarkers;
+private _gridSquares = [_gridMarkers] call frontL_fnc_gridSquares;
+private _frontLine = [_center, _radius, "battleZoneLine"] call frontL_fnc_drawFrontLine;
+private _unitCount = 0;
+
+[_gridSquares, _battleZoneMarker] call frontL_fnc_assignGridSquareOwners;
+
+_zone set ["center", _center];
+_zone set ["radius", _radius];
+_zone set ["cellSize", _markerSize];
+_zone set ["gridSquares", _gridSquares];
+_zone set ["gridMarkers", _gridMarkers];
+_zone set ["unitMarkers", []];
+_zone set ["frontLine", _frontLine];
+_zone set ["unitCount", _unitCount];
+
+
+_zone;
+
+};
+
+
+
+frontL_fnc_stringifyHashMap = {
+	params ["_hashMap"];
+	private _stringHash = createHashMap;
+	private _nonStringValues= ["SIDE","OBJECT"];
+
+	{
+		private _key = _X;
+		private _value = _y;
+		private _typeName = typeName _y;
+		if(isNil "_value")then{_value = ""};
+		if(isNil "_typeName")then{_value = ""};
+
+		
+		
+		if(_typeName in _nonStringValues)
+		then{_value = str _value};
+
+		_stringHash set [_key, _value];
+
+	} forEach _hashMap;
+
+_stringHash;	
+};
+
+frontL_fnc_updateBattleZone = { 
+params["_battleZone"];
+private _pos = _battleZone get "center";
+
+private _zoneSize = (_battleZone get "radius") * 0.7;
+private _unitsInZone = [_pos, _zoneSize] call frontL_fnc_AiObjectsInArea;
+[_battleZone, _unitsInZone] call frontL_fnc_updateGrid;
+// systemChat str (count _unitsInZone);
+
+};
 
 /************************************Init actions***************************************/
-private _testMarkers = (allMapMarkers select {"testMarker" in _x});
-{deleteMarker _x} forEach _testMarkers;
+// private _testMarkers = (allMapMarkers select {"battleZoneGSQ" in _x});
+// frontL_BattleZone = nil;
+// {deleteMarker _x} forEach _testMarkers;
 
-private _battleZoneMarker =  (allMapMarkers select {"frontL" in _x && {"battleZone" in _x}})#0;
 
-private _pos = markerPos _battleZoneMarker;
-private _xY  = markerSize _battleZoneMarker; //Returns half the x/y value (https://community.bistudio.com/wiki/getMarkerSize)
-private _radius = selectMax _xY *2;
-private _dir = markerDir _battleZoneMarker;
 
-private _baseGrid = [_pos, _radius, 300, 0, false] call SquarePosArr;
-private _battleGrid = _baseGrid inAreaArray _battleZoneMarker;
-
-private _J = 0;
-{
-	private _marker = [_x, "testMarker"] call frontL_fnc_dotMarker;
-	// sleep 0.1;
-	// _marker setMarkerText (str _J);
-	_J=_J+1;
-} forEach _battleGrid;
+// private _stringHash = [frontL_BattleZone] call frontL_fnc_stringifyHashMap;
+// copyToClipboard str _stringHash;
 
 // private _baseGrid = [_pos, _radius,300] call SquarePosArr;
 
@@ -149,6 +236,20 @@ private _J = 0;
 
 /************************************Code Snippets / scribble************************************************/
 /*
+Array
+Boolean
+Code
+Config
+Namespace
+NaN
+Number
+Side
+String
+{
+	private _marker = [_x, "testMarker"] call frontL_fnc_dotMarker;
+	
+} forEach _battleGrid;
+
 
 {
 	[_x, "testMarker"] call frontL_fnc_dotMarker;

@@ -4,7 +4,8 @@
 //                 See fn_gridSquares.sqf and fn_createZone.sqf for more info
 
 private _maxRadius = 20;
-params ["_pos", "_squareArr", "_maxRadius"];
+private _returnMidIndex = true;
+params ["_pos", "_squareArr", "_maxRadius", "_returnMidIndex"];
 
 
 private _positions = [];
@@ -15,10 +16,14 @@ private _nearestPos = [_pos, _positions] call Tcore_fnc_nearestPos;
 
 private _gridHash = (_squareArr select {(_x get "position") isEqualTo _nearestPos})#0;
 
-if(isNil "_gridHash")
+if(isNil "_gridHash"
+&&{_returnMidIndex})
 then{
 		private _midIndex = [_squareArr] call frontL_fnc_midArrayIndex;
 		_gridHash = _squareArr # _midIndex;
 };
+
+
+if(isNil "_gridHash")exitWith{};
 
 _gridHash;

@@ -4,13 +4,40 @@
 //                 can be adjusted with the "FrontL_updateTimer" value.
 
 FrontL_debug = true;
-FrontL_updateTimer = 0;
+FrontL_updateTimer = 3;
+frontL_gridSquareSize = 100;
+
+
+
+// []spawn {
+//   sleep 3;
+//   frontL_BattleZone = [] call frontL_fnc_initBattleZone;
+
+// while{true}do{
+  
+//   [frontL_BattleZone] call frontL_fnc_updateBattleZone;
+//   sleep 3;
+// }};
 
 //shorter function-name for ease of writing
-if(isNil "fDbgMsg")
-then{
-  fDbgMsg = frontL_fnc_debugMessage;
-  };
+if(isNil "fDbgMsg")then{fDbgMsg = frontL_fnc_debugMessage;};
+
+//temp-placement of BZ init
+[]spawn{
+  sleep 2;
+  systemChat "initializing BattleZone";
+
+  frontL_BattleZone = [] call frontL_fnc_initBattleZone;
+  waitUntil{sleep 1; !isNil "frontL_BattleZone"};
+  systemChat "initializing done...";
+  systemChat "looping update";
+
+while {true}do{
+[frontL_BattleZone] call frontL_fnc_updateBattleZone;
+sleep FrontL_updateTimer;
+};
+systemChat "update done";
+};
 
 
 /*
