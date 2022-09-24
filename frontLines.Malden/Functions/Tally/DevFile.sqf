@@ -7,6 +7,12 @@ systemChat "devFile found";
 
 /************************************Functions under construction************************/
 
+/*
+Hey John!
+*/
+
+
+
 frontL_fnc_gridSqNeighbors = { 
 params ["_squareHash", "_gridSquares"];
 private _neighbors = createHashMap;
