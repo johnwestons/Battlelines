@@ -10,16 +10,18 @@ private _gridSquares = _zone get "gridSquares";
 private _previousOccupier = _squareHash get "previousOccupier";
 private _currentOccupier = _squareHash get "occupier";
 private _timeSinceLastOccupation = time - (_squareHash get "lastOccupied");
-// private _neighbors = [_gridSquares, _squareHash] call frontL_fnc_squareNeighbors;
-// private _owner = _squareHash get "occupier";
-// private _enemySquares =  _neighbors select {!(([_x] call frontL_fnc_squareDominantSide) == _owner)};
-// private _friendlySquares =  _neighbors select {!(_x in _enemySquares)};
+private _timedOut = _timeSinceLastOccupation > 30;
 private _inGridUnits = _unitsInArea inAreaArray _marker;
-
+private _empty = (count _inGridUnits < 1);
+private _outNumbered = [_squareHash] call frontL_fnc_outnumberedSquare;
+private _enemySide = (([_gridSquares, _squareHash, true] call frontL_fnc_getNeighbors)#0)get "occupier";
 private _sidesPresent = [];
 
+private _enemySwallow = (_empty 
+                      &&{(_outNumbered || _squareHash get "island")
+					  &&{_timedOut}});
 
-if(count _inGridUnits > 0)
+if!(_empty)
 then{
 		{
 			_sidesPresent pushBackUnique (side _x);
@@ -29,13 +31,13 @@ then{
 };
 
 private _newOccupier = objNull;
+if(_enemySwallow)
+then{
+        _newOccupier = _enemySide;
+		_squareHash set ["lastOccupied", time];
+	};
 if(count _sidesPresent == 1)then{_newOccupier = _sidesPresent#0;};
 if(count _sidesPresent > 1)then{_newOccupier = sideEnemy;};
-
-// if(_timeSinceLastOccupation > 20
-// &&{(count _inGridUnits) < 1
-// &&{(count _enemySquares) > (count _friendlySquares)}})
-// then{_newOccupier = ((_enemySquares)#0) get "occupier";};
 
 
 if((typeName _newOccupier == "SIDE"))

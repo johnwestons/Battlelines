@@ -8,23 +8,21 @@ params ['_markerArr'];
 private _gridSquares = [];
 
 {
-	private _gridHash = createHashMap;
+	private _squareHash = createHashMap;
 	private _position = markerPos _x;
 	
-	_gridHash set ["marker", _x];
-	_gridHash set ["position", _position];
-	_gridHash set ["occupier", objNull];
-	_gridHash set ["previousOccupier", objNull];
-	_gridHash set ["lastOccupied", -300];
+	_squareHash set ["marker", _x];
+	_squareHash set ["position", _position];
+	_squareHash set ["occupier", objNull];
+	_squareHash set ["previousOccupier", objNull];
+	_squareHash set ["lastOccupied", -300];
+	_squareHash set ["island", false];
 
-	// private _edges = [_gridHash] call frontL_fnc_gridSquareEdges;
-	
-	//gets 8 positions in each direction of the square and stores it in the map for fast retrieval
-	// _gridHash set ["edges", _edges];
-
-	_gridSquares pushBack _gridHash;
+	_gridSquares pushBack _squareHash;
 	
 } forEach _markerArr;
+
+// private _lastSquare = (count _gridSquares)-2;
 
 {[_x, _gridSquares] call frontL_fnc_gridSqNeighbors;} forEach _gridSquares;
 

@@ -6,6 +6,7 @@ class frontL
 									file = "Functions\Tally\init\fn_initFrontLines.sqf";
 									postInit = 1;
 								};
+			class taskmanager {file = "Functions\Tally\init\fn_taskmanager.sqf";};
 		}
         
 		class debug

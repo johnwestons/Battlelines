@@ -42,7 +42,7 @@ FrontL_AllZones = createHashMap;
 
 [] spawn frontL_fnc_zoneUpdater;
 */
-
+execVM 'Functions\Tally\DevInit.sqf'; 
 if(FrontL_debug)then{[]spawn frontL_fnc_debugInit};
 
 
