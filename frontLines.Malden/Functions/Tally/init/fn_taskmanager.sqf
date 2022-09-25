@@ -10,8 +10,8 @@ then{
 		if(time>_heavyFncTimer)
 		exitWith{
 			
-			private _script = [frontL_BattleZone, true] spawn frontL_fnc_updateBattleZone;
-			waitUntil{scriptDone _script};
+			private _script = [frontL_BattleZone, true] call frontL_fnc_updateBattleZone;
+			// waitUntil{scriptDone _script};
 
 			_heavyFncTimer = time + FrontL_lineTimer;
 			_updateTimer = time + FrontL_updateTimer;
@@ -19,8 +19,8 @@ then{
 		};
 
 
-		private _script = [frontL_BattleZone, false] spawn frontL_fnc_updateBattleZone;
-		waitUntil{scriptDone _script};
+		private _script = [frontL_BattleZone, false] call frontL_fnc_updateBattleZone;
+		// waitUntil{scriptDone _script};
 	
 		systemChat (["zone updated in ", (time - _time), " S."] joinString "");
 

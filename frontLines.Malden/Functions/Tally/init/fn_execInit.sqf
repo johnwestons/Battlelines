@@ -4,8 +4,8 @@ private _timer = time;
 systemChat "initializing BattleZone";
 frontL_BattleZone = [] call frontL_fnc_initBattleZone;
 
-private _script = [frontL_BattleZone, true] spawn frontL_fnc_updateBattleZone;
-waitUntil{scriptDone _script};
+private _script = [frontL_BattleZone, true] call frontL_fnc_updateBattleZone;
+// waitUntil{scriptDone _script};
 
 [] spawn frontL_fnc_taskManager;
 

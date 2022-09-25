@@ -42,6 +42,7 @@ class frontL
 			// class initZoneFromMarker {file = "Functions\Tally\zoneFnc\fn_initZoneFromMarker.sqf";};
 			class initBattleZone {file = "Functions\Tally\zoneFnc\fn_initBattleZone.sqf";};
 			class getBattleGrid {file = "Functions\Tally\zoneFnc\fn_getBattleGrid.sqf";};
+			class gridSidePos  {file = "Functions\Tally\zoneFnc\fn_gridSidePos.sqf";};
 		}
 
 		class gridSquareFnc
@@ -58,9 +59,16 @@ class frontL
 			class getConnect {file = "Functions\Tally\gridSquareFnc\fn_getConnect.sqf"};
 			class outnumberedSquare {file = "Functions\Tally\gridSquareFnc\fn_outnumberedSquare.sqf"};
 			class squareEnemyPOC {file = "Functions\Tally\gridSquareFnc\fn_squareEnemyPOC.sqf"};
-			class frontLineSquares {file = "Functions\Tally\gridSquareFnc\fn_squareEnemyPOC.sqf"};
+			class frontLineSquares {file = "Functions\Tally\gridSquareFnc\fn_frontLineSquares.sqf"};
 			class squareFromMarker {file = "Functions\Tally\gridSquareFnc\fn_squareFromMarker.sqf"};
 			class isFrontLineSquare {file = "Functions\Tally\gridSquareFnc\fn_isFrontLineSquare.sqf"};
+			class squarePositions {file = "Functions\Tally\gridSquareFnc\fn_squarePositions.sqf"};
+			class avgSqPosWithEnemy {file = "Functions\Tally\gridSquareFnc\fn_avgSqPosWithEnemy.sqf"};
+			class gridSqNeighbors {file = "Functions\Tally\gridSquareFnc\fn_gridSqNeighbors.sqf"};
+			class getNeighbors  {file = "Functions\Tally\gridSquareFnc\fn_getNeighbors.sqf"};
+			class gridSquareEdges {file = "Functions\Tally\gridSquareFnc\fn_gridSquareEdges.sqf"};
+			class getSquaresFromMrk {file = "Functions\Tally\gridSquareFnc\fn_getSquaresFromMrk.sqf"};
+			class assignGridSquareOwners {file = "Functions\Tally\gridSquareFnc\fn_assignGridSquareOwners.sqf"};
 		}
 
 		class objectDetection
@@ -92,6 +100,8 @@ class frontL
 			class addUnitMarkers {file = "Functions\Tally\markers\fn_addUnitMarkers.sqf"};
 			class removeUnitMarkers {file = "Functions\Tally\markers\fn_removeUnitMarkers.sqf"};
 			class mrkColorFromSide {file = "Functions\Tally\markers\fn_mrkColorFromSide.sqf"};
+			class dotsOnPosArr {file = "Functions\Tally\markers\fn_dotsOnPosArr.sqf"};
+			class battleZoneSideMarkers {file = "Functions\Tally\markers\fn_battleZoneSideMarkers.sqf"};
 		}
 	};
 #include "TallyCore.hpp"
