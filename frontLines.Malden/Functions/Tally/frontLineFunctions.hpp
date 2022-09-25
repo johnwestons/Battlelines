@@ -7,6 +7,7 @@ class frontL
 									postInit = 1;
 								};
 			class taskmanager {file = "Functions\Tally\init\fn_taskmanager.sqf";};
+			class execInit {file = "Functions\Tally\init\fn_execInit.sqf";};
 		}
         
 		class debug
@@ -25,17 +26,21 @@ class frontL
 			class baseFrontLine {file = "Functions\Tally\polyLine\fn_baseFrontLine.sqf";};
 			class adjustFrontLine {file = "Functions\Tally\polyLine\fn_adjustFrontLine.sqf";};
 			class adjustFrontLinePos {file = "Functions\Tally\polyLine\fn_adjustFrontLinePos.sqf";};
+			class frontLinePOC {file = "Functions\Tally\polyLine\fn_frontLinePOC.sqf";};
 
 		}
 
 		class zoneFnc
 		{
-			class createZone {file = "Functions\Tally\zoneFnc\fn_createZone.sqf";};
+			// class createZone {file = "Functions\Tally\zoneFnc\fn_createZone.sqf";};
+			class defineIslandAreas {file = "Functions\Tally\zoneFnc\fn_defineIslandAreas.sqf";};
 			class updateGrid {file = "Functions\Tally\zoneFnc\fn_updateGrid.sqf";};
 			class zoneUnitMarkers {file = "Functions\Tally\zoneFnc\fn_zoneUnitMarkers.sqf";};
-			class zoneUpdater {file = "Functions\Tally\zoneFnc\fn_zoneUpdater.sqf";};
-			class updateZone {file = "Functions\Tally\zoneFnc\fn_updateZone.sqf";};
-			class initZoneFromMarker {file = "Functions\Tally\zoneFnc\fn_initZoneFromMarker.sqf";};
+			// class zoneUpdater {file = "Functions\Tally\zoneFnc\fn_zoneUpdater.sqf";};
+			//class updateZone {file = "Functions\Tally\zoneFnc\fn_updateZone.sqf";};
+			class updateBattleZone {file = "Functions\Tally\zoneFnc\fn_updateBattleZone.sqf";};
+			// class initZoneFromMarker {file = "Functions\Tally\zoneFnc\fn_initZoneFromMarker.sqf";};
+			class initBattleZone {file = "Functions\Tally\zoneFnc\fn_initBattleZone.sqf";};
 			class getBattleGrid {file = "Functions\Tally\zoneFnc\fn_getBattleGrid.sqf";};
 		}
 
@@ -48,6 +53,14 @@ class frontL
 			class squaresInDir {file = "Functions\Tally\gridSquareFnc\fn_squaresInDir.sqf"};
 			class squareDominantSide {file = "Functions\Tally\gridSquareFnc\fn_squareDominantSide.sqf"};
 			class nearestGridSquare {file = "Functions\Tally\gridSquareFnc\fn_nearestGridSquare.sqf"};
+			class getStartSquare {file = "Functions\Tally\gridSquareFnc\fn_getStartSquare.sqf"};
+			class allConnectingSquares {file = "Functions\Tally\gridSquareFnc\fn_allConnectingSquares.sqf"};
+			class getConnect {file = "Functions\Tally\gridSquareFnc\fn_getConnect.sqf"};
+			class outnumberedSquare {file = "Functions\Tally\gridSquareFnc\fn_outnumberedSquare.sqf"};
+			class squareEnemyPOC {file = "Functions\Tally\gridSquareFnc\fn_squareEnemyPOC.sqf"};
+			class frontLineSquares {file = "Functions\Tally\gridSquareFnc\fn_squareEnemyPOC.sqf"};
+			class squareFromMarker {file = "Functions\Tally\gridSquareFnc\fn_squareFromMarker.sqf"};
+			class isFrontLineSquare {file = "Functions\Tally\gridSquareFnc\fn_isFrontLineSquare.sqf"};
 		}
 
 		class objectDetection

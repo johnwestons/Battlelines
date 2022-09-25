@@ -19,8 +19,8 @@ private _sidesPresent = [];
 
 private _enemySwallow = (_empty 
                       &&{(_outNumbered || _squareHash get "island")
-		              &&{_timedOut
-		              &&{!isNil "_enemySide"}}});
+					  &&{_timedOut
+					  &&{!isNil "_enemySide"}}});
 
 if!(_empty)
 then{

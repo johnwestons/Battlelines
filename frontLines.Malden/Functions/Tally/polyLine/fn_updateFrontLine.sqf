@@ -4,35 +4,36 @@
 //                 in order to get the effect closer to what is shown in the YT-video (https://www.youtube.com/watch?v=VRd7tuuSEPY)
 //                 more advanced and precise calculation is needed. Possible no doubt, but time-consuming.
 
-params ["_zone", "_zoneUnits"];
+params ["_zone"];
 
 private _center = _zone get "center";
 private _radius = (_zone get "radius")*0.7;
 private _frontLine = _zone get "frontLine";
 private _lineColor = "ColorBlack";
-private _activeSides = [_zoneUnits] call frontL_fnc_sidesInUnitArr;
+private _sidePositions = [_zone] call frontL_fnc_gridSidePos;
+private _frontLineDir = ((_sidePositions#0) getDir (_sidePositions#1));
 
-//exit if there are less than 2 sides active in the area (aka. no fighting)
-if((count _activeSides) == 1)
-then{_lineColor = [(_activeSides#0)] call frontL_fnc_mrkColorFromSide;};
-if((count _activeSides) < 2)
-exitWith{[_frontLine, _center, _radius, _lineColor] call frontL_fnc_roundPolyLine;};
+private _basePosArr = ([_sidePositions, _frontLineDir, _radius, _zone] call frontL_fnc_baseFrontLine) inAreaArray (_zone get "marker");
 
-//average position for all units by side (should return 1 pos pr side).
-private _sidePositions = [_zoneUnits, _radius] call frontL_fnc_sidePositions;
+//get positions on squares that are not isolated from the main section and has at least one enemy adjacent
+private _frontLineSquares = [_zone] call frontL_fnc_frontLineSquares;
+_frontLineSquares = _frontLineSquares select {(_x get "occupier")== blufor};
 
-//dir between the 2-3 sidePositions.
-private _frontLineDir = ([_sidePositions] call frontL_fnc_frontLineDir);
-        _frontLineDir = [_frontLineDir] call Tcore_fnc_formatDir;
+//get the positions connecting to enemy territory
+private _frontlinePositions = [_frontlineSquares] call frontL_fnc_frontLinePOC;
 
-//create an array of positions in the correct angle, then adjust them according to held territory
-private _basePosArr = [_sidePositions, _frontLineDir, _radius, _zone] call frontL_fnc_baseFrontLine;
-private _adjustedPosArr = [_basePosArr, _frontLineDir, _radius, _zone, _sidePositions] call frontL_fnc_adjustFrontLine;
+//insert start and end-points of the frontLine (see baseFrontLine)
+_frontlinePositions insert [0, [(_basePosArr#0)], true];
+_frontlinePositions pushBackUnique (_basePosArr#((count _basePosArr)-1));
 
-private _linePath = [_adjustedPosArr] call frontL_fnc_pathFromPosArr;
+// sort the positions in proper order, to avoid zig-zag and jumping steps
+_frontlinePositions= [_frontlinePositions] call formatFrontlinePosArr;
+
+private _linePath = [_frontlinePositions] call frontL_fnc_pathFromPosArr;
 
 _frontLine setMarkerPolyline _linePath;
 _frontLine setMarkerColor _lineColor;
+_frontLine setMarkerSize [5,5];
 
 
 true;
