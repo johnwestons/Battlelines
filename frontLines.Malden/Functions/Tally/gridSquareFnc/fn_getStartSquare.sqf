@@ -1,3 +1,8 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Called by "fn_defineIslandAreas.sqf" and itself (in case the first iteration returned a square on a isolated area).
+
 private _lastIndex = 0;
 params ["_zone", "_gridSquares", "_wantedSide", "_lastIndex"];
 private _countAll = (count _gridSquares -1);

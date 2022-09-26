@@ -1,4 +1,5 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
 // Description:    Creates "dot-markers" at the amount specified, the positions 
 //                 can be set by using the marker-names in the returned array.

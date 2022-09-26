@@ -1,3 +1,8 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Used in the init-function of the BattleZone, adds 4 neighbors to the _squareHash.
+
 params ["_squareHash", "_gridSquares"];
 private _neighbors = createHashMap;
 private _marker = _squareHash get "marker";

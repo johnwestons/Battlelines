@@ -1,7 +1,7 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
-// Description:    Initializes the BattleZone and spawns an updating loop. The loop frequency
-//                 can be adjusted with the "FrontL_updateTimer" value.
+// Description:    Sets global-variables and calls the init-process.(server only).
 
 if(!isServer)exitWith{};
 
@@ -15,7 +15,6 @@ frontL_gridSquareSize = 100;
 if(isNil "fDbgMsg")then{fDbgMsg = frontL_fnc_debugMessage;};
 
 if(FrontL_debug)then{[]spawn frontL_fnc_debugInit};
-// sleep 1;
 
 [] spawn frontL_fnc_execInit;
 

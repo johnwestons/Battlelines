@@ -1,3 +1,8 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Determines on which side(s) a square is facing the enemy.
+
 params ["_squareHash"];
 private _neighbors = _squareHash get "neighbors";
 private _pos = _squareHash get "position";

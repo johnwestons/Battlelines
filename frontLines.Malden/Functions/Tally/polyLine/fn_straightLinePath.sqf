@@ -1,4 +1,5 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
 // Description:    Creates a straight path for use in the polyLine function.
 //                 Defines 2 positions on the left and right of the center, relative to the "_direction"

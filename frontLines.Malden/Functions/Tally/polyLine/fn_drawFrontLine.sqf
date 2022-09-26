@@ -1,4 +1,5 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
 // Description:    Creates a marker and sets it as a polyLine-type marker. the line is drawn between 
 //                 points at 90 degrees (east -> west)

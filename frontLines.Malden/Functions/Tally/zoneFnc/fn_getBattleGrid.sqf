@@ -1,10 +1,13 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
 // Description:    Creates a grid of positions then removes from that grid any positions outside of the marker
 //                 with "frontL" and "battleZone" in the marker name (if there are more than one only the first will be used).
 //                 Any position found within the area of a marker with "frontL" and "excluded" in the name will be removed.
 //                 Keep in mind that the marker-name check is CASE-SENSITIVE.
 //                The actual gridSize is slightly larger than set in the "fn_initFrontLines.sqf" file.
+
+
 params["_battleZoneMarker"];
 
 private _exclusionMarkers = (allMapMarkers select {"frontL" in _x && {"excluded" in _x}});//The "in" check is case-sensitive.

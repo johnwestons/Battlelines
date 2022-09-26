@@ -1,3 +1,8 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Gets squares bordering the "_squareHash" in 4 directions. can filter friends/enemies only.
+
 private _enemiesOnly = false;
 private _friendsOnly = false;
 params["_gridSquares", "_squareHash", "_enemiesOnly", "_friendsOnly"];

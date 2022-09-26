@@ -1,3 +1,10 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Defines those areas that are not a part of the "main-block" of a particular side by
+//                 checking which squares can connect to eachother.
+
+
 private _wantedSide = blufor;
 params ["_zone"];
 private _gridSquares = _zone get "gridSquares";

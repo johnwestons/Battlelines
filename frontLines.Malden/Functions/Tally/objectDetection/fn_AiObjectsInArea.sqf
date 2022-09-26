@@ -1,4 +1,5 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
 // Description:    Detects all ai-objects of the sides allowed within an area defined 
 //                 by a center and a radius. Agents are weeded out by checking for group.

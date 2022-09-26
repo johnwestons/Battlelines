@@ -1,3 +1,9 @@
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
+// Comissioned by: Great Ape Gaming
+// Description:    Assigns owner to all squares in the battleZone, 
+//                 the general area of ownership is decided by markers placed in editor (see "fn_battleZoneSideMarkers.sqf").
+
 params["_gridSquares", "_battleZoneMarker"]; 
 
 private _radius = selectMax(markerSize _battleZoneMarker);

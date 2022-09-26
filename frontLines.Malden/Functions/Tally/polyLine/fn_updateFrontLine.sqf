@@ -1,8 +1,8 @@
-// Author:         [P] Tally (https://github.com/Tally-1)
+// Author:         [P] Tally
+// Author links:   https://github.com/Tally-1 , https://thehartgen.web.app/projects/ , https://www.fiverr.com/hartgen_dev/script-anything-you-can-think-of-in-arma-3
 // Comissioned by: Great Ape Gaming
-// Description:    This is a rudementary start for a moving frontLine
-//                 in order to get the effect closer to what is shown in the YT-video (https://www.youtube.com/watch?v=VRd7tuuSEPY)
-//                 more advanced and precise calculation is needed. Possible no doubt, but time-consuming.
+// Description:    Takes the point of contact of every blufor-square on the frontline 
+//                 and draws a line from point to point using the setMarkerPolyline command.
 
 params ["_zone"];
 

@@ -24,22 +24,17 @@ class frontL
 			class drawFrontLine {file = "Functions\Tally\polyLine\fn_drawFrontLine.sqf";};
 			class updateFrontLine {file = "Functions\Tally\polyLine\fn_updateFrontLine.sqf";};
 			class baseFrontLine {file = "Functions\Tally\polyLine\fn_baseFrontLine.sqf";};
-			class adjustFrontLine {file = "Functions\Tally\polyLine\fn_adjustFrontLine.sqf";};
-			class adjustFrontLinePos {file = "Functions\Tally\polyLine\fn_adjustFrontLinePos.sqf";};
 			class frontLinePOC {file = "Functions\Tally\polyLine\fn_frontLinePOC.sqf";};
 
 		}
 
 		class zoneFnc
 		{
-			// class createZone {file = "Functions\Tally\zoneFnc\fn_createZone.sqf";};
+			
 			class defineIslandAreas {file = "Functions\Tally\zoneFnc\fn_defineIslandAreas.sqf";};
 			class updateGrid {file = "Functions\Tally\zoneFnc\fn_updateGrid.sqf";};
 			class zoneUnitMarkers {file = "Functions\Tally\zoneFnc\fn_zoneUnitMarkers.sqf";};
-			// class zoneUpdater {file = "Functions\Tally\zoneFnc\fn_zoneUpdater.sqf";};
-			//class updateZone {file = "Functions\Tally\zoneFnc\fn_updateZone.sqf";};
 			class updateBattleZone {file = "Functions\Tally\zoneFnc\fn_updateBattleZone.sqf";};
-			// class initZoneFromMarker {file = "Functions\Tally\zoneFnc\fn_initZoneFromMarker.sqf";};
 			class initBattleZone {file = "Functions\Tally\zoneFnc\fn_initBattleZone.sqf";};
 			class getBattleGrid {file = "Functions\Tally\zoneFnc\fn_getBattleGrid.sqf";};
 			class gridSidePos  {file = "Functions\Tally\zoneFnc\fn_gridSidePos.sqf";};
@@ -49,9 +44,6 @@ class frontL
 		{
 			class gridSquares {file = "Functions\Tally\gridSquareFnc\fn_gridSquares.sqf"};
 			class updateGridSquare {file = "Functions\Tally\gridSquareFnc\fn_updateGridSquare.sqf"};
-			class squareOwnedBy {file = "Functions\Tally\gridSquareFnc\fn_squareOwnedBy.sqf"};
-			class sidesInSquares {file = "Functions\Tally\gridSquareFnc\fn_sidesInSquares.sqf"};
-			class squaresInDir {file = "Functions\Tally\gridSquareFnc\fn_squaresInDir.sqf"};
 			class squareDominantSide {file = "Functions\Tally\gridSquareFnc\fn_squareDominantSide.sqf"};
 			class nearestGridSquare {file = "Functions\Tally\gridSquareFnc\fn_nearestGridSquare.sqf"};
 			class getStartSquare {file = "Functions\Tally\gridSquareFnc\fn_getStartSquare.sqf"};
@@ -63,10 +55,8 @@ class frontL
 			class squareFromMarker {file = "Functions\Tally\gridSquareFnc\fn_squareFromMarker.sqf"};
 			class isFrontLineSquare {file = "Functions\Tally\gridSquareFnc\fn_isFrontLineSquare.sqf"};
 			class squarePositions {file = "Functions\Tally\gridSquareFnc\fn_squarePositions.sqf"};
-			class avgSqPosWithEnemy {file = "Functions\Tally\gridSquareFnc\fn_avgSqPosWithEnemy.sqf"};
 			class gridSqNeighbors {file = "Functions\Tally\gridSquareFnc\fn_gridSqNeighbors.sqf"};
 			class getNeighbors  {file = "Functions\Tally\gridSquareFnc\fn_getNeighbors.sqf"};
-			class gridSquareEdges {file = "Functions\Tally\gridSquareFnc\fn_gridSquareEdges.sqf"};
 			class getSquaresFromMrk {file = "Functions\Tally\gridSquareFnc\fn_getSquaresFromMrk.sqf"};
 			class assignGridSquareOwners {file = "Functions\Tally\gridSquareFnc\fn_assignGridSquareOwners.sqf"};
 		}
@@ -74,22 +64,16 @@ class frontL
 		class objectDetection
 		{
 			class AiObjectsInArea {file = "Functions\Tally\objectDetection\fn_AiObjectsInArea.sqf"};
-			class sidesInUnitArr {file = "Functions\Tally\objectDetection\fn_sidesInUnitArr.sqf"};
 		}
 
 		class misc
 		{
 			
-			class frontLineDir {file="Functions\Tally\misc\fn_frontLineDir.sqf"};
-			class sidePositions {file="Functions\Tally\misc\fn_sidePositions.sqf"};
 			class straightPosArr {file="Functions\Tally\misc\fn_straightPosArr.sqf"};
 			class midArrayIndex {file="Functions\Tally\misc\fn_midArrayIndex.sqf"};
-			class frontLinePosBetween2Sides {file="Functions\Tally\misc\fn_frontLinePosBetween2Sides.sqf"};
 			class squareGrid {file="Functions\Tally\misc\fn_squareGrid.sqf"};
 			class sinCosPos {file="Functions\Tally\misc\fn_sinCosPos.sqf"};
 			class removeExcludedPositions {file="Functions\Tally\misc\fn_removeExcludedPositions.sqf"};
-			
-			
 		}
 		class markers
 		{
