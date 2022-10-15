@@ -27,11 +27,12 @@ _frontlinePositions insert [0, [(_basePosArr#0)], true];
 _frontlinePositions pushBackUnique (_basePosArr#((count _basePosArr)-1));
 
 // sort the positions in proper order, to avoid zig-zag and jumping steps
-_frontlinePositions= [_frontlinePositions] call formatFrontlinePosArr;
+_frontlinePositions= [_frontlinePositions] call frontL_fnc_formatFrontlinePosArr;
 
 private _linePath = [_frontlinePositions] call frontL_fnc_pathFromPosArr;
 
 _frontLine setMarkerPolyline _linePath;
+// [_frontLine,_linePath] remoteExecCall ['setMarkerPolyline',0];
 _frontLine setMarkerColor _lineColor;
 _frontLine setMarkerSize [5,5];
 

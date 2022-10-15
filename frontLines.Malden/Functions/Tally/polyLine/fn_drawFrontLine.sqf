@@ -13,4 +13,5 @@ private _markerName  = [_zoneCenter, " frontLine_", _postFix] joinString "";
 private _marker = createMarker [_markerName, _zoneCenter];
 _marker setMarkerColor "ColorBlack";
 _marker setMarkerPolyline _path;
+// [_marker,_path] remoteExecCall ['setMarkerPolyline',0];
 _marker;

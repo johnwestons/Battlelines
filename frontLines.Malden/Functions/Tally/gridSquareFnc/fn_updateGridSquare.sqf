@@ -17,7 +17,7 @@ private _empty = (count _inGridUnits < 1);
 private _outNumbered = [_squareHash] call frontL_fnc_outnumberedSquare;
 private _enemySide = (([_gridSquares, _squareHash, true] call frontL_fnc_getNeighbors)#0)get "occupier";
 private _sidesPresent = [];
-
+private _allowedSides = [east, west, sideEnemy];
 private _enemySwallow = (_empty 
                       &&{(_outNumbered || _squareHash get "island")
 					  &&{_timedOut
@@ -42,6 +42,7 @@ if(count _sidesPresent == 1)then{_newOccupier = _sidesPresent#0;};
 if(count _sidesPresent > 1)then{_newOccupier = sideEnemy;};
 
 
+
 if((typeName _newOccupier == "SIDE"))
 then{
 		_squareHash set ["previousOccupier", _currentOccupier];
@@ -57,6 +58,8 @@ private _dominantSide = _newOccupier;
 if(!(typeName _dominantSide == "SIDE"))
 then{_dominantSide = _currentOccupier;};
 
+if!(_dominantSide in _allowedSides)
+then{_dominantSide = selectRandom[east, west]};
 
 private _color = [_dominantSide] call frontL_fnc_mrkColorFromSide;
 _marker setMarkerColor _color;

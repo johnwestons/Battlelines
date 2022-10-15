@@ -25,6 +25,7 @@ class frontL
 			class updateFrontLine {file = "Functions\Tally\polyLine\fn_updateFrontLine.sqf";};
 			class baseFrontLine {file = "Functions\Tally\polyLine\fn_baseFrontLine.sqf";};
 			class frontLinePOC {file = "Functions\Tally\polyLine\fn_frontLinePOC.sqf";};
+			class formatFrontlinePosArr {file = "Functions\Tally\polyLine\fn_formatFrontlinePosArr.sqf";};
 
 		}
 
