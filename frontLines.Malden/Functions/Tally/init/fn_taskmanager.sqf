@@ -11,7 +11,8 @@ while {true}do{
 if(time>_updateTimer)
 then{
 		private _time = time;
-
+		if(FrontL_debug)then{{deleteMarker _x;} forEach frontL_DebugMarkers};
+		
 		if(time>_heavyFncTimer)
 		exitWith{
 			

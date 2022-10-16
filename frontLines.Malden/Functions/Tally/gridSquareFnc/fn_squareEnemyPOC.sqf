@@ -9,11 +9,14 @@ private _pos = _squareHash get "position";
 private _marker = _squareHash get "marker";
 private _color  = markerColor _marker;
 private _pointsOfContact = [];
-
+private _validColors = ["colorblufor", "coloropfor", "coloryellow"];
 
 {
-	private _isMarker = (!isNil "_y") && { _Y != "" };
-	private _enemy = (_isMarker && {(markerColor _y) != _color});
+	private _validMarker = (!isNil "_y") && { _Y != "" };
+	private _enemy = (_validMarker 
+	               && {((markerColor _y) != _color)
+				   && {(toLower(markerColor _y)) in _validColors
+				   && {markerShape _y == "RECTANGLE"}}});
 
 	if(_enemy)
 	then{

@@ -10,13 +10,16 @@ params [
 	];
 
 private _markerNames = [];
+private _type = "Border";
+if(FrontL_debug)
+then{_type = "SolidBorder";};
 
 {
 	private _markerName =
 	[
 		_x, 
 		_markerSize,
-		"SOLID",
+		"SolidBorder",
 		"ColorOrange",
 		0.7,
 		_name

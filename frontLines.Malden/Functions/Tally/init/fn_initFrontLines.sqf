@@ -7,8 +7,8 @@ if(!isServer)exitWith{};
 
 FrontL_showUnitMarkers = false;
 FrontL_debug = true;
-FrontL_updateTimer = 30;
-FrontL_lineTimer = 30;
+FrontL_updateTimer = 3;
+FrontL_lineTimer = 3;
 frontL_gridSquareSize = 100;
 
 //shorter function-name for ease of writing

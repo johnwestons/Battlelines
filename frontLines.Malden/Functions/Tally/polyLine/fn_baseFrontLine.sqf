@@ -4,7 +4,7 @@
 // Description:    Returns an array of positions in the direction of the frontline.
 
 params[
-	"_sidePositions", //posArr
+	"_midPos", //posArr
 	"_frontLineDir", //direction (integer)
 	"_radius",      //size in meters
 	"_zone"        //for info see fn_createZone.sqf
@@ -13,7 +13,7 @@ private _anchorPoints = _zone get "anchorPositions";
 
 
 //the base, may be skewed outside of the zone
-private _midPos = [_sidePositions#0, _sidePositions#1] call Tcore_fnc_getMidpoint;
+// private _midPos = [_sidePositions#0, _sidePositions#1] call Tcore_fnc_getMidpoint;
 private _lineStart = [_midPos#0, _midPos#1, (_frontLineDir -90), _radius] call Tcore_fnc_sinCosPos;
 private _lineEnd = [_midPos#0, _midPos#1, (_frontLineDir +90), _radius] call Tcore_fnc_sinCosPos;
 

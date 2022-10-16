@@ -7,7 +7,19 @@ systemChat "devFile found";
 /************************************Functions under construction************************/
 
 
-// formatFrontlinePosArr = { 
+
+// frontl_fnc_pathCrossSquare = {  
+// params ["_startPos", "_targetPos"];
+// private _midPos = [_startPos, _targetPos] call Tcore_fnc_getMidPoint;
+// private _radius = frontL_gridSquareSize / 4;
+// private _markers = (frontL_BattleZone get "gridMarkers") select {(markerPos _x distance2D _midPos)<_radius};
+// hint str (count _markers);
+
+
+// };
+
+
+// frontl_fnc_formatFrontlinePosArr = { 
 
 
 // };

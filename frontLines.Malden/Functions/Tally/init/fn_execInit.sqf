@@ -4,6 +4,7 @@
 // Description:    Inits the BattleZone and the update-loop(task-manager).
 
 frontL_BattleZoneInitialized = false;
+frontL_DebugMarkers = [];
 sleep 1;
 private _timer = time;
 systemChat "initializing BattleZone";
