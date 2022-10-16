@@ -21,7 +21,7 @@ then{_type = "SolidBorder";};
 		_markerSize,
 		"SolidBorder",
 		"ColorOrange",
-		0.7,
+		frontL_gridSquareAlpha,
 		_name
 	] call frontL_fnc_SquareMarker;
 	_markerNames pushBack _markerName;

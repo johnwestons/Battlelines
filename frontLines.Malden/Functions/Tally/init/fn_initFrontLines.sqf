@@ -10,6 +10,7 @@ FrontL_debug = true;
 FrontL_updateTimer = 3;
 FrontL_lineTimer = 3;
 frontL_gridSquareSize = 100;
+frontL_gridSquareAlpha = 0.3;
 
 //shorter function-name for ease of writing
 if(isNil "fDbgMsg")then{fDbgMsg = frontL_fnc_debugMessage;};
